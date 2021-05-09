@@ -229,6 +229,7 @@ library flutter_typeahead;
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -1231,20 +1232,21 @@ class _SuggestionsListState<T> extends State<_SuggestionsList<T>>
   }
 
   Widget createSuggestionsWidget() {
-    Widget child = ListView(
-      padding: EdgeInsets.zero,
-      primary: false,
-      shrinkWrap: true,
-      reverse: false, // reverses the list to start at the bottom
-      children: this._suggestions!.map((T suggestion) {
-        return InkWell(
-          child: widget.itemBuilder!(context, suggestion),
-          onTap: () {
-            widget.onSuggestionSelected!(suggestion);
-          },
-        );
-      }).toList(),
-    );
+    Widget child = SafeArea(
+        child: Scrollbar(
+            isAlwaysShown: true,
+            child: SingleChildScrollView(
+              child: Column(
+                children: this._suggestions!.map((T suggestion) {
+                  return InkWell(
+                    child: widget.itemBuilder!(context, suggestion),
+                    onTap: () {
+                      widget.onSuggestionSelected!(suggestion);
+                    },
+                  );
+                }).toList(),
+              ),
+            )));
 
     if (widget.decoration!.hasScrollbar) {
       child = Scrollbar(child: child);
