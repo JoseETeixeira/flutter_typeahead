@@ -991,6 +991,7 @@ class _SuggestionsList<T> extends StatefulWidget {
 
 class _SuggestionsListState<T> extends State<_SuggestionsList<T>>
     with SingleTickerProviderStateMixin {
+  final scrollController = new ScrollController();
   Iterable<T>? _suggestions;
   late bool _suggestionsValid;
   late VoidCallback _controllerListener;
@@ -1234,6 +1235,7 @@ class _SuggestionsListState<T> extends State<_SuggestionsList<T>>
   Widget createSuggestionsWidget() {
     Widget child = SafeArea(
         child: Scrollbar(
+            controller: scrollController,
             isAlwaysShown: true,
             child: SingleChildScrollView(
               child: Column(
