@@ -1089,7 +1089,7 @@ class _SuggestionsListState<T> extends State<_SuggestionsList<T>>
         // if it wasn't removed in the meantime
         setState(() {
           double? animationStart = widget.animationStart;
-            // allow suggestionsCallback to return null and not throw error here
+          // allow suggestionsCallback to return null and not throw error here
           if (error != null || suggestions?.isEmpty == true) {
             animationStart = 1.0;
           }
@@ -1235,9 +1235,7 @@ class _SuggestionsListState<T> extends State<_SuggestionsList<T>>
       padding: EdgeInsets.zero,
       primary: false,
       shrinkWrap: true,
-      reverse: widget.suggestionsBox!.direction == AxisDirection.down
-          ? false
-          : true, // reverses the list to start at the bottom
+      reverse: false, // reverses the list to start at the bottom
       children: this._suggestions!.map((T suggestion) {
         return InkWell(
           child: widget.itemBuilder!(context, suggestion),
