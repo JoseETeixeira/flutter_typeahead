@@ -1,5 +1,5 @@
 name: flutter_typeahead
-version: 3.1.7
+version: 3.1.9
 
 description: A highly customizable typeahead (autocomplete) text input field for Flutter
 homepage: https://github.com/AbdulRahmanAlHamali/flutter_typeahead
@@ -7,7 +7,10 @@ homepage: https://github.com/AbdulRahmanAlHamali/flutter_typeahead
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: # Add this line
+    sdk: flutter 
   flutter_keyboard_visibility: ^5.0.0
+  syncfusion_localizations: ^19.1.56
 
 dev_dependencies:
   flutter_test:

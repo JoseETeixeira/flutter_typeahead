@@ -1237,21 +1237,22 @@ class _SuggestionsListState<T> extends State<_SuggestionsList<T>>
         child: Scrollbar(
             controller: scrollController,
             isAlwaysShown: true,
-            child: SingleChildScrollView(
-              child: Column(
-                children: this._suggestions!.map((T suggestion) {
-                  return InkWell(
-                    child: widget.itemBuilder!(context, suggestion),
-                    onTap: () {
-                      widget.onSuggestionSelected!(suggestion);
-                    },
-                  );
-                }).toList(),
-              ),
+            child: ListView(
+              children: this._suggestions!.map((T suggestion) {
+                return InkWell(
+                  child: widget.itemBuilder!(context, suggestion),
+                  onTap: () {
+                    widget.onSuggestionSelected!(suggestion);
+                  },
+                );
+              }).toList(),
             )));
 
     if (widget.decoration!.hasScrollbar) {
-      child = Scrollbar(child: child);
+      child = Scrollbar(
+        child: child,
+        controller: scrollController,
+      );
     }
 
     return child;
