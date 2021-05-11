@@ -1235,24 +1235,20 @@ class _SuggestionsListState<T> extends State<_SuggestionsList<T>>
 
   Widget createSuggestionsWidget() {
     Widget child = SafeArea(
-        child: Scrollbar(
-            controller: scrollController,
-            isAlwaysShown: true,
-            child: this._suggestions!.length > 0
-                ? ListView(
-                    children: this._suggestions!.map((T suggestion) {
-                      return InkWell(
-                        child: Container(
-                            height:
-                                MediaQuery.of(context).size.height * 0.3 / 20,
-                            child: widget.itemBuilder!(context, suggestion)),
-                        onTap: () {
-                          widget.onSuggestionSelected!(suggestion);
-                        },
-                      );
-                    }).toList(),
-                  )
-                : Row()));
+        child: this._suggestions!.length > 0
+            ? ListView(
+                children: this._suggestions!.map((T suggestion) {
+                  return InkWell(
+                    child: Container(
+                        height: MediaQuery.of(context).size.height * 0.3 / 20,
+                        child: widget.itemBuilder!(context, suggestion)),
+                    onTap: () {
+                      widget.onSuggestionSelected!(suggestion);
+                    },
+                  );
+                }).toList(),
+              )
+            : Row());
 
     if (widget.decoration!.hasScrollbar) {
       child = Scrollbar(
