@@ -1,10 +1,11 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=C:\src\flutter_windows_2.0.3-stable\flutter"
-export "FLUTTER_APPLICATION_PATH=C:\Users\Eduardo\OneDrive\Ambiente de Trabalho\DevelopmentParadise\Cristal\Money21\Services\money21\custom_plugins\flutter_typeahead\example"
-export "FLUTTER_TARGET=lib\main.dart"
+export "FLUTTER_ROOT=/home/lucas/snap/flutter/common/flutter"
+export "FLUTTER_APPLICATION_PATH=/home/lucas/Desktop/flutter_typeahead/example"
+export "COCOAPODS_PARALLEL_CODE_SIGN=true"
+export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
-export "SYMROOT=${SOURCE_ROOT}/../build\ios"
+export "SYMROOT=${SOURCE_ROOT}/../build/ios"
 export "FLUTTER_BUILD_NAME=1.0.0"
 export "FLUTTER_BUILD_NUMBER=1"
 export "DART_OBFUSCATION=false"

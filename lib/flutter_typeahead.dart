@@ -1155,13 +1155,14 @@ class _SuggestionsListState<T> extends State<_SuggestionsList<T>>
     BoxConstraints constraints;
     if (widget.decoration!.constraints == null) {
       constraints = BoxConstraints(
+        minHeight: 0,
         maxHeight: widget.suggestionsBox!.maxHeight,
       );
     } else {
       double maxHeight = min(widget.decoration!.constraints!.maxHeight,
           widget.suggestionsBox!.maxHeight);
       constraints = widget.decoration!.constraints!.copyWith(
-        minHeight: min(widget.decoration!.constraints!.minHeight, maxHeight),
+        minHeight: 0,
         maxHeight: maxHeight,
       );
     }
@@ -1237,7 +1238,7 @@ class _SuggestionsListState<T> extends State<_SuggestionsList<T>>
         child: Scrollbar(
             controller: scrollController,
             isAlwaysShown: true,
-            child: ListView(
+            child: this._suggestions!.length>0?ListView(
               children: this._suggestions!.map((T suggestion) {
                 return InkWell(
                   child: widget.itemBuilder!(context, suggestion),
@@ -1246,7 +1247,7 @@ class _SuggestionsListState<T> extends State<_SuggestionsList<T>>
                   },
                 );
               }).toList(),
-            )));
+            )):Row());
 
     if (widget.decoration!.hasScrollbar) {
       child = Scrollbar(
